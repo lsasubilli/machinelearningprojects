@@ -8,8 +8,7 @@ st.markdown('Image Detection')
 my_list = [
     "Made",
     [
-        " by: ",
-    
+        " by: ",  
     ],
     ("Lalith", "Sasubilli"),
     ".",
@@ -32,7 +31,7 @@ if uploaded_file is not None:
     image = Image.open(uploaded_file)
     image = np.array(image)  # Convert PIL Image to NumPy array
     img = cv.cvtColor(image, cv.COLOR_RGB2BGR)  
-    ClassIndex, Confidence, bbox = model.detect(img)
+    ClassIndex, Confidence, bbox = model.detect(img, confThreshold=0.36)
     try:
         x= ClassIndex[0]
         st.markdown(classlabels[x-1])
